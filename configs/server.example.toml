@@ -1,0 +1,30 @@
+# server.example.toml -- Konfigurasi Server Terpusat WaveHound
+
+[server]
+host = "0.0.0.0"
+port = 8080
+workers = 4
+tls_enabled = false
+# cert_file = "/etc/wavehound/certs/server.crt"
+# key_file = "/etc/wavehound/certs/server.key"
+
+[database]
+type = "mysql" # "mysql" atau "sqlite"
+host = "127.0.0.1"
+port = 3306
+user = "wavehound"
+password = "ganti-dengan-password-mysql"
+database = "wavehound"
+# Untuk mode sqlite lokal:
+# path = "/var/lib/wavehound/wavehound.db"
+
+[pipeline]
+default_tx_power = -59.0 # dBm pada 1 meter
+default_path_loss_n = 2.2 # Karakteristik gedung kantor bertembok
+kalman_process_var = 0.05 # Q: fleksibilitas pergerakan target
+kalman_meas_var = 4.0 # R: toleransi derau pengukuran RSSI (stddev 2 dB)
+
+[privacy]
+retention_days = 30 # Batas kedaluwarsa riwayat data lokasi
+allowlist_strict = true # Hanya proses identitas terdaftar
+auto_redact_unknown = true # Samarkan perangkat asing otomatis

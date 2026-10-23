@@ -1,0 +1,26 @@
+# nodes.example.toml -- Konfigurasi Node Sensor Tepi WaveHound
+
+[node]
+node_id = "node-l3-barat-02"
+site_id = "gedung-utama"
+
+[location]
+x = 42.5 # Posisi x dalam meter pada denah
+y = 18.0 # Posisi y dalam meter pada denah
+z = 2.8 # Ketinggian dari lantai (meter)
+floor = 3 # Lantai
+description = "Langit-langit koridor barat, dekat ruang rapat B"
+
+[server]
+url = "http://127.0.0.1:8080"
+api_token = "GANTI-DENGAN-BEARER-TOKEN-NODE"
+tls_verify = true
+
+[scan]
+min_rssi = -95 # Abaikan sinyal di bawah -95 dBm
+ema_alpha = 0.4 # Bobot pemulusan sinyal di sisi sensor
+stale_after_secs = 30 # Kedaluwarsa status perangkat hilang kontak
+
+[buffer]
+path = "/var/lib/wavehound/node_buffer.db"
+max_size_mb = 512 # Maksimum antrean SQLite saat koneksi jaringan terputus
